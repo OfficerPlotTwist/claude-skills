@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -u \"${HOME}/.claude/hooks/cad_rigor_session_start.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -u \"${HOME}/.claude/hooks/cad_rigor_tripwire.py\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
